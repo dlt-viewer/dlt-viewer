@@ -26,7 +26,7 @@ jobs:
         env: 
           WORKSPACE: $GITHUB_WORKSPACE
           TEST_1: ${{ env.GITHUB_WORKSPACE }}
-          TEST_2: "%GITHUB_WORKSPACE%"
+          TEST_2: ${{ env.working-directory }}
 
       - name: Archive artifact
         uses: actions/upload-artifact@v2.0.1
