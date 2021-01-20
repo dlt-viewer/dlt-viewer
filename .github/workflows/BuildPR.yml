@@ -24,7 +24,8 @@ jobs:
       - name: Build ${{ matrix.task }}
         run: ./build_${{ matrix.task }}_windows_qt5_MSVC.bat
         env:
-          WORKSPACE: "I_am_a-test"
+          WORKSPACE: ${{ env.GITHUB_WORKSPACE }}
+          OTHER_TEST: ${{ env.working-directory }}
       - name: Archive artifact
         uses: actions/upload-artifact@v2.0.1
         if: ${{ success() }}
