@@ -288,10 +288,7 @@ echo ####################################
 echo ###       ERROR occured          ###
 echo ####################################
 cd ..
-if '%WORKSPACE%'=='' (
-pause
-)
-rem exit 1
+exit 1
 
 :QUIT
 echo ************************************
@@ -299,7 +296,5 @@ echo ***       SUCCESS finish         ***
 echo ************************************
 cd ..
 echo SDK installed in: %DLT_VIEWER_SDK_DIR%
-if '%WORKSPACE%'=='' (
-pause
-)
-rem exit 0
+
+exit 0

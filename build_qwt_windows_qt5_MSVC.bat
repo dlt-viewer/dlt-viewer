@@ -162,8 +162,9 @@ echo ###       ERROR occured          ###
 echo ####################################
 cd %WORKINGDIR%
 IF '%WORKSPACE%'=='' (
-pause
+    pause
 )
+exit 1
 
 
 :QUIT
@@ -173,6 +174,6 @@ echo ************************************
 echo Qwt installed in: %QWT_DIR%
 cd %WORKINGDIR%
 IF '%WORKSPACE%'=='' (
-pause
+    pause
 )
 
