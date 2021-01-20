@@ -69,7 +69,7 @@ jobs:
           fetch-depth: 0
           submodules: true
       - name: Build ${{ matrix.task }}
-        run: build_${{ matrix.task }}_windows_qt5_MSVC.bat
+        run: ./build_${{ matrix.task }}_windows_qt5_MSVC.bat
       - name: Archive artifact
         uses: actions/upload-artifact@v2.0.1
         if: ${{ success() }}
