@@ -14,12 +14,9 @@ echo ***         Configuration        ***
 echo ************************************
 
 rem setlocal enabledelayedexpansion
-echo %WORKSPACE%
-echo "up: workspace, down github workspace"
-echo %GITHUB_WORKSPACE%
-echo "other test is down"
-echo %OTHER_TEST%
-
+echo "Workspace: %WORKSPACE%"
+echo "Github_Workspace: %GITHUB_WORKSPACE%"
+echo "Other Test: %OTHER_TEST%"
 
 exit
 

@@ -22,7 +22,7 @@ jobs:
         with:
           mirror: http://ftp.fau.de/qtproject/
       - name: Set the workspace to Github Workspace
-        run: echo "WORKSPACE=mytest" >> $GITHUB_ENV
+        run: echo "::set-env name=OTHER_TEST::MYTESTVALUE"
       - name: Build ${{ matrix.task }}
         run: ./build_${{ matrix.task }}_windows_qt5_MSVC.bat
       - name: Archive artifact
