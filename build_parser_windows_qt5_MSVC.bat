@@ -55,7 +55,7 @@ if '%WORKSPACE%'=='' (
     set BUILD_DIR=%CD%\build\release
 ) else (
     if '%DLT_PARSER_DIR%'=='' (
-        set DLT_PARSER_DIR=%WORKSPACE%\DltParser
+        set DLT_PARSER_DIR=%WORKSPACE%\build\dist\DltParser
     )
 
     set SOURCE_DIR=%WORKSPACE%

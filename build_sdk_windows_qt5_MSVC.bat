@@ -52,7 +52,7 @@ if '%WORKSPACE%'=='' (
     set BUILD_DIR=%CD%\build\release
 ) else (
     if '%DLT_VIEWER_SDK_DIR%'=='' (
-        set DLT_VIEWER_SDK_DIR=%WORKSPACE%\DltViewerSDK
+        set DLT_VIEWER_SDK_DIR=%WORKSPACE%\build\dist\DltViewerSDK
     )
 
     set SOURCE_DIR=%WORKSPACE%

@@ -4,7 +4,6 @@ on: [pull_request]
 
 jobs:
   buildMac:
-    if: 1 == 2
     name: Build macOS
     runs-on: macOS-latest
     strategy:
@@ -34,7 +33,6 @@ jobs:
           path: build/release
 
   buildLinux:
-    if: 1 == 2
     name: Build ${{ matrix.ubuntu }}
     strategy:
       matrix:
@@ -82,4 +80,4 @@ jobs:
         if: ${{ success() }}
         with:
           name: DLT ${{ matrix.task }}
-          path: build/release
+          path: build/dist
