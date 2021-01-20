@@ -128,74 +128,74 @@ if not exist %DLT_PARSER_DIR%\examples mkdir %DLT_PARSER_DIR%\examples
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 echo *** Copy files ***
-rem copy %QTDIR%\bin\icuin54.dll %DLT_PARSER_DIR%
-rem IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
-
-rem copy %QTDIR%\bin\icuuc54.dll %DLT_PARSER_DIR%
-rem IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
-
-rem copy %QTDIR%\bin\icudt54.dll %DLT_PARSER_DIR%
-rem IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
-
-rem copy %QTDIR%\bin\libwinpthread-1.dll %DLT_PARSER_DIR%
-rem IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
-rem 
-rem copy %QTDIR%\bin\libgcc_s_dw2-1.dll %DLT_PARSER_DIR%
-rem IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
-rem 
-rem copy "%QTDIR%\bin\libstdc++-6.dll" %DLT_PARSER_DIR%
-rem IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
-
+echo "trace 0"
 copy %QTDIR%\bin\Qt5Core.dll %DLT_PARSER_DIR%
+echo "trace 1"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %QTDIR%\bin\Qt5Gui.dll %DLT_PARSER_DIR%
+echo "trace 2"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %QTDIR%\bin\Qt5Network.dll %DLT_PARSER_DIR%
+echo "trace 3"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %QTDIR%\bin\Qt5Sql.dll %DLT_PARSER_DIR%
+echo "trace 4"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %QTDIR%\bin\Qt5Svg.dll %DLT_PARSER_DIR%
+echo "trace 5"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %QTDIR%\bin\Qt5Widgets.dll %DLT_PARSER_DIR%
+echo "trace 6"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %QTDIR%\bin\Qt5PrintSupport.dll %DLT_PARSER_DIR%
+echo "trace 7"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %QTDIR%\bin\Qt5Xml.dll %DLT_PARSER_DIR%
+echo "trace 8"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %QTDIR%\bin\Qt5OpenGL.dll %DLT_PARSER_DIR%
+echo "trace 9"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %BUILD_DIR%\dlt-parser.exe %DLT_PARSER_DIR%
+echo "trace 10"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %SOURCE_DIR%\ReleaseNotes_Parser.txt %DLT_PARSER_DIR%
+echo "trace 11"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %SOURCE_DIR%\README_Parser.txt %DLT_PARSER_DIR%
+echo "trace 12"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %SOURCE_DIR%\LICENSE.txt %DLT_PARSER_DIR%
+echo "trace 13"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 copy %SOURCE_DIR%\MPL.txt %DLT_PARSER_DIR%
+echo "trace 14"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 mkdir %DLT_PARSER_DIR%\platforms 
+echo "trace 15"
 if %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
  
 copy %QTDIR%\plugins\platforms\qwindows.dll %DLT_PARSER_DIR%\platforms
+echo "trace 16"
 if %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 
 xcopy %SOURCE_DIR%\parser\examples %DLT_PARSER_DIR%\examples /E
+echo "trace 17"
 IF %ERRORLEVEL% NEQ 0 GOTO ERROR_HANDLER
 
 GOTO QUIT
