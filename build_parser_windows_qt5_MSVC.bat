@@ -14,6 +14,12 @@ echo ***         Configuration        ***
 echo ************************************
 
 rem setlocal enabledelayedexpansion
+echo %WORKSPACE%
+echo "up: workspace, down github workspace"
+echo %GITHUB_WORKSPACE%
+
+
+exit
 
 rem parameter of this batch script can be either x86 or x86_amd64
 if "%ARCHITECTURE%"=="" (
