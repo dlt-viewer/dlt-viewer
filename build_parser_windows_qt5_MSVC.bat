@@ -1,4 +1,4 @@
-@echo off
+REM @echo off
 
 REM Date     Version   Author                Changes
 REM 4.7.19   1.0       Alexander Wenzel      Update to Qt 5.12.4 and Visual Studio 2015
