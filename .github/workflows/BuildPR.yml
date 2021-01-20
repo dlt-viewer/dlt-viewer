@@ -21,11 +21,13 @@ jobs:
         uses: jurplel/install-qt-action@v2
         with:
           mirror: http://ftp.fau.de/qtproject/
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "{WORKSPACE}={%GITHUB_WORKSPACE%}" >> $GITHUB_ENV
+          echo "{OTHER_TEST}={"%GITHUB_WORKSPACE%"}" >> $GITHUB_ENV
       - name: Build ${{ matrix.task }}
         run: ./build_${{ matrix.task }}_windows_qt5_MSVC.bat
-        env:
-          WORKSPACE: ${{ env.GITHUB_WORKSPACE }}
-          OTHER_TEST: ${{ env.working-directory }}
       - name: Archive artifact
         uses: actions/upload-artifact@v2.0.1
         if: ${{ success() }}
