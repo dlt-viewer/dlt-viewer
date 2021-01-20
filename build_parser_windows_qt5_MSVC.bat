@@ -15,13 +15,6 @@ echo ************************************
 
 rem setlocal enabledelayedexpansion
 
-echo "Github_Workspace: %GITHUB_WORKSPACE%"
-echo "Workspace: %WORKSPACE%"
-echo "TEST_1: %TEST_1%"
-echo "TEST_2: %TEST_2%"
-
-exit
-
 rem parameter of this batch script can be either x86 or x86_amd64
 if "%ARCHITECTURE%"=="" (
     if "%PROCESSOR_ARCHITECTURE%"=="AMD64" (
