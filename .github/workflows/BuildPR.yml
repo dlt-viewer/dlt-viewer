@@ -68,11 +68,12 @@ jobs:
         with:
           fetch-depth: 0
           submodules: true
-          
       - name: Install qt
         uses: jurplel/install-qt-action@v2
         with:
-          mirror: http://ftp.fau.de/qtproject/ 
+          mirror: http://ftp.fau.de/qtproject/
+      - name: Prepare Environment
+        run: echo "WORKSPACE=$GITHUB_WORKSPACE" >> $GITHUB_ENV
       - name: Build ${{ matrix.task }}
         run: ./build_${{ matrix.task }}_windows_qt5_MSVC.bat
       - name: Archive artifact
