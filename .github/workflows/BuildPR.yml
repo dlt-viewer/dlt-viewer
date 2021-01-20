@@ -68,6 +68,9 @@ jobs:
         with:
           fetch-depth: 0
           submodules: true
+          
+      - name: Install qt
+        uses: jurplel/install-qt-action@v2
       - name: Build ${{ matrix.task }}
         run: ./build_${{ matrix.task }}_windows_qt5_MSVC.bat
       - name: Archive artifact
