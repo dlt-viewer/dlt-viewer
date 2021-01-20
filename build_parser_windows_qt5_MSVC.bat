@@ -14,9 +14,11 @@ echo ***         Configuration        ***
 echo ************************************
 
 rem setlocal enabledelayedexpansion
-echo "Workspace: %WORKSPACE%"
+
 echo "Github_Workspace: %GITHUB_WORKSPACE%"
-echo "Other Test: %OTHER_TEST%"
+echo "Workspace: %WORKSPACE%"
+echo "TEST_1: %TEST_1%"
+echo "TEST_2: %TEST_2%"
 
 exit
 
