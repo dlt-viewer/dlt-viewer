@@ -71,6 +71,8 @@ jobs:
           
       - name: Install qt
         uses: jurplel/install-qt-action@v2
+        with:
+          mirror: http://ftp.fau.de/qtproject/ 
       - name: Build ${{ matrix.task }}
         run: ./build_${{ matrix.task }}_windows_qt5_MSVC.bat
       - name: Archive artifact
