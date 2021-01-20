@@ -46,12 +46,22 @@ if "%MSVC_DIR%"=="" set MSVC_DIR=C:\Program Files (x86)\Microsoft Visual Studio 
 set PATH=%QTDIR%\bin;%MSVC_DIR%;%MSVC_DIR%\bin;%PATH%
 set QTSDK=%QTDIR%
 
-IF "%DLT_PARSER_DIR%"=="" (
+if '%WORKSPACE%'=='' (
+    if '%DLT_PARSER_DIR%'=='' (
         set DLT_PARSER_DIR=c:\DltParser
+    )
+
+    set SOURCE_DIR=%CD%
+    set BUILD_DIR=%CD%\build\release
+) else (
+    if '%DLT_PARSER_DIR%'=='' (
+        set DLT_PARSER_DIR=%WORKSPACE%\DltParser
+    )
+
+    set SOURCE_DIR=%WORKSPACE%
+    set BUILD_DIR=%WORKSPACE%\build\release
 )
 
-set SOURCE_DIR=%CD%
-set BUILD_DIR=%CD%\build\release
 
 echo ************************************
 echo * QTDIR     = %QTDIR%
