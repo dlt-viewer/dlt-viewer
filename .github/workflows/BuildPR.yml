@@ -9,59 +9,59 @@ on:
       - master
 
 jobs:
-  buildMac:
-    name: Build macOS
-    runs-on: macOS-latest
-    strategy:
-      matrix:
-        xcode: [Xcode_12.2, Xcode_12.3, Xcode_11.7]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2.3.4
-        with:
-          fetch-depth: 0
-          submodules: true
-      - name: Investigate available XCode versions
-        run: ls -n /Applications/ | grep Xcode*
-      - name: Set XCode Version
-        run: sudo xcode-select -s /Applications/${{ matrix.xcode }}.app
-      - name: install qt
-        run: brew install qt
-      - name: install build environment
-        run: scripts/install.sh
-      - name: Build project
-        run: scripts/build.sh
-      - name: Archive artifact
-        uses: actions/upload-artifact@v2.2.2
-        if: ${{ success() }}
-        with:
-          name: DLT-macOS-${{ matrix.xcode }}
-          path: build/release
-
-  buildLinux:
-    name: Build ${{ matrix.ubuntu }}
-    strategy:
-      matrix:
-        ubuntu: [ubuntu-18.04, ubuntu-20.04]
-    runs-on: ${{ matrix.ubuntu }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2.3.4
-        with:
-          fetch-depth: 0
-          submodules: true
-      - name: install build environment
-        run: scripts/install.sh
-      - name: Build project
-        run: scripts/build.sh
-      - name: Make artifact executable
-        run: chmod -R +x build/release 
-      - name: Archive artifact
-        uses: actions/upload-artifact@v2.2.2
-        if: ${{ success() }}
-        with:
-          name: DLT-${{ matrix.ubuntu }}
-          path: build/release
+#  buildMac:
+#    name: Build macOS
+#    runs-on: macOS-latest
+#    strategy:
+#      matrix:
+#        xcode: [Xcode_12.2, Xcode_12.3, Xcode_11.7]
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2.3.4
+#        with:
+#          fetch-depth: 0
+#          submodules: true
+#      - name: Investigate available XCode versions
+#        run: ls -n /Applications/ | grep Xcode*
+#      - name: Set XCode Version
+#        run: sudo xcode-select -s /Applications/${{ matrix.xcode }}.app
+#      - name: install qt
+#        run: brew install qt
+#      - name: install build environment
+#        run: scripts/install.sh
+#      - name: Build project
+#        run: scripts/build.sh
+#      - name: Archive artifact
+#        uses: actions/upload-artifact@v2.2.2
+#        if: ${{ success() }}
+#        with:
+#          name: DLT-macOS-${{ matrix.xcode }}
+#          path: build/release
+#
+#  buildLinux:
+#    name: Build ${{ matrix.ubuntu }}
+#    strategy:
+#      matrix:
+#        ubuntu: [ubuntu-18.04, ubuntu-20.04]
+#    runs-on: ${{ matrix.ubuntu }}
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2.3.4
+#        with:
+#          fetch-depth: 0
+#          submodules: true
+#      - name: install build environment
+#        run: scripts/install.sh
+#      - name: Build project
+#        run: scripts/build.sh
+#      - name: Make artifact executable
+#        run: chmod -R +x build/release
+#      - name: Archive artifact
+#        uses: actions/upload-artifact@v2.2.2
+#        if: ${{ success() }}
+#        with:
+#          name: DLT-${{ matrix.ubuntu }}
+#          path: build/release
 
   buildWindows:
     name: Build Windows
@@ -87,3 +87,11 @@ jobs:
         with:
           name: DLT-Windows-${{ matrix.task }}
           path: build/dist
+      - name: Archive artifact
+        run: Compress-Archive -Path .\build\dist -DestinationPath DLT-Windows-${{ matrix.task }}.zip
+      - name: Archive zip
+        uses: actions/upload-artifact@v2.2.2
+        if: ${{ success() }}
+        with:
+          name: DLT-Windows-${{ matrix.task }}.zip
+          path: DLT*.zip
