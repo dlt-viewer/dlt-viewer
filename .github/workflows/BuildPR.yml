@@ -31,12 +31,20 @@ jobs:
         run: scripts/install.sh
       - name: Build project
         run: scripts/build.sh
+      - name: Build dmg
+        run: hdiutil create -volname DLT-viewer -srcfolder build/release -ov -format UDZO DLT-Viewer.dmg
       - name: Archive artifact
         uses: actions/upload-artifact@v2.2.2
         if: ${{ success() }}
         with:
           name: DLT-macOS-${{ matrix.xcode }}
           path: build/release
+      - name: Archive dmg
+        uses: actions/upload-artifact@v2.2.2
+        if: ${{ success() }}
+        with:
+          name: DLT-dmg-${{ matrix.xcode }}
+          path: ./*.dmg
 
   buildLinux:
     name: Build ${{ matrix.ubuntu }}
