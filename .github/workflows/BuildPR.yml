@@ -32,7 +32,7 @@ jobs:
       - name: Build project
         run: scripts/build.sh
       - name: Build dmg
-        run: hdiutil create -volname DLT-viewer -srcfolder build/release -ov -format UDZO DLT-Viewer.dmg
+        run: cd build/release && macdeployqt DLT-viewer.app -dmg
       - name: Archive artifact
         uses: actions/upload-artifact@v2.2.2
         if: ${{ success() }}
