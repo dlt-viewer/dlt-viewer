@@ -9,10 +9,6 @@ sudo apt update
 sudo apt-get install -y --no-install-recommends apt-utils
 sudo apt install -y wget unzip software-properties-common lsb-release openssh-client curl
 
-# QT 5.12.10, is installed into /opt/qt512/
-sudo touch /etc/apt/sources.list
-sudo add-apt-repository -y ppa:beineri/opt-qt-5.12.10-$(lsb_release -cs)
-
 # Latest cmake for current platform
 sudo wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | sudo gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
 sudo apt-add-repository -y "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"
@@ -22,8 +18,8 @@ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 
 sudo apt update
 sudo apt install -y git cmake build-essential ninja-build \
-    qt512declarative qt512serialport qt512charts-no-lgpl qt512svg \
     libgtk2.0-dev libgl-dev gcc-11 g++-11
+sudo apt install -y qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
 
 sudo update-alternatives --remove-all cpp
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 110 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11 --slave /usr/bin/gcc-ar gcc-ar /usr/bin/gcc-ar-11 --slave /usr/bin/gcc-ranlib gcc-ranlib /usr/bin/gcc-ranlib-11 --slave /usr/bin/cpp cpp /usr/bin/cpp-11
@@ -48,7 +44,7 @@ chmod a+x ~/bin/linuxdeploy-plugin-qt
 cd /opt
 git clone http://code.qt.io/qt/qtstyleplugins.git
 cd qtstyleplugins
-/opt/qt512/bin/qmake
+qmake
 make -j$(nproc)
 sudo make install
 rm -rf /opt/qtstyleplugins
